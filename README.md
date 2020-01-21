@@ -11,6 +11,7 @@
 
 ```
 build:
+  context: https://github.com/ethercreative/docker-craft-php-fpm-alpine.git
   args:
     - WITH_POSTGRES=1
 ```
