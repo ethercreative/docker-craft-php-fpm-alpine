@@ -44,6 +44,6 @@ docker push ethercreative/craft-php-fpm-alpine:mysql
 #### With XML
 
 ```
-docker build --build-arg WITH_MYSQL=true --build-arg WITH_XML=true -t ethercreative/craft-php-fpm-alpine:mysql .
+docker build --build-arg WITH_MYSQL=true --build-arg WITH_XML=true -t ethercreative/craft-php-fpm-alpine:mysql-xml .
 docker push ethercreative/craft-php-fpm-alpine:mysql-xml
 ```
