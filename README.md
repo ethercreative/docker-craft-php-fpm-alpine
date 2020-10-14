@@ -7,7 +7,7 @@
 - `WITH_XML`
 - `WITH_XDEBUG`
 
-## 
+##
 
 ### Compose
 
@@ -47,3 +47,7 @@ docker push ethercreative/craft-php-fpm-alpine:mysql
 docker build --build-arg WITH_MYSQL=true --build-arg WITH_XML=true -t ethercreative/craft-php-fpm-alpine:mysql-xml .
 docker push ethercreative/craft-php-fpm-alpine:mysql-xml
 ```
+
+## Automatic Build
+
+Run `build.sh` to build all variants and push them to the Docker repository.
