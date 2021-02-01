@@ -1,4 +1,4 @@
-FROM php:7.3-fpm-alpine
+FROM php:7.4-fpm-alpine
 
 # Variables
 ARG WITH_POSTGRES
@@ -51,24 +51,24 @@ RUN pecl install imagick \
 # Postgres
 RUN if [ $WITH_POSTGRES = "true" ] ; then \
     apk --no-cache add \
-        postgresql-dev \
-        postgresql-client; \
+    postgresql-dev \
+    postgresql-client; \
     docker-php-ext-install pdo_pgsql; \
-fi ;
+    fi ;
 
 # MySQL
 RUN if [ $WITH_MYSQL = "true" ] ; then \
     apk --no-cache add mariadb-client; \
     docker-php-ext-install pdo_mysql; \
-fi ;
+    fi ;
 
 # XML
 RUN if [ $WITH_XML = "true" ] ; then \
     apk --no-cache add libxslt-dev; \
     docker-php-ext-install \
-        xsl \
-        soap; \
-fi ;
+    xsl \
+    soap; \
+    fi ;
 
 # xdebug
 RUN if [ $WITH_XDEBUG = "true" ] ; then \
@@ -78,12 +78,12 @@ RUN if [ $WITH_XDEBUG = "true" ] ; then \
     echo "display_startup_errors = On" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini; \
     echo "display_errors = On" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini; \
     echo "xdebug.remote_enable=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini; \
-fi ;
+    fi ;
 
 # Clean Up
 RUN apk del autoconf g++ libtool make \
     && rm -rf /tmp/* /var/cache/apk/*
 
 # Install Composer
-COPY --from=composer:1 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 RUN composer global require hirak/prestissimo
