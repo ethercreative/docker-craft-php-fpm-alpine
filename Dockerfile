@@ -30,7 +30,8 @@ RUN apk --no-cache add \
 # Configure GD
 RUN docker-php-ext-configure gd \
     --with-freetype \
-    --with-jpeg
+    --with-jpeg \
+    --with-png
 
 # Install PHP extensions
 RUN docker-php-ext-install \
