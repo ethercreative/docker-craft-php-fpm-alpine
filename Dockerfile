@@ -84,4 +84,3 @@ RUN apk del autoconf g++ libtool make \
 
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
-RUN composer global require hirak/prestissimo
