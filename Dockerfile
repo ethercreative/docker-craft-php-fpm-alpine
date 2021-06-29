@@ -20,6 +20,7 @@ RUN apk --no-cache add \
     freetype-dev \
     libjpeg-turbo-dev \
     libpng-dev \
+    libgomp \
     imagemagick \
     imagemagick-dev \
     git \
