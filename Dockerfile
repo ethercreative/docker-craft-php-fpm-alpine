@@ -17,6 +17,7 @@ RUN apk --no-cache add \
     autoconf \
     libzip-dev \
     icu-dev \
+    icu-data-full \
     freetype-dev \
     libjpeg-turbo-dev \
     libpng-dev \
