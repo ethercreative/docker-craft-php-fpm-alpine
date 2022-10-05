@@ -1,8 +1,6 @@
 FROM php:8.1-fpm-alpine
 
 # Variables
-ARG WITH_POSTGRES
-ARG WITH_MYSQL
 ARG WITH_XML
 ARG WITH_XDEBUG
 
@@ -42,25 +40,12 @@ RUN docker-php-ext-install \
     sockets \
     intl \
     zip \
-    bcmath
+    bcmath \
+    pdo_mysql
 
 # Install Imagick
 RUN pecl install imagick \
     && docker-php-ext-enable imagick
-
-# Postgres
-RUN if [ $WITH_POSTGRES = "true" ] ; then \
-    apk --no-cache add \
-    postgresql-dev \
-    postgresql-client; \
-    docker-php-ext-install pdo_pgsql; \
-    fi ;
-
-# MySQL
-RUN if [ $WITH_MYSQL = "true" ] ; then \
-    apk --no-cache add mariadb-client; \
-    docker-php-ext-install pdo_mysql; \
-    fi ;
 
 # XML
 RUN if [ $WITH_XML = "true" ] ; then \
