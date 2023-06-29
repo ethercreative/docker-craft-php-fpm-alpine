@@ -25,7 +25,8 @@ RUN apk --no-cache add \
     git \
     jpegoptim \
     optipng \
-    unzip
+    unzip \
+    linux-headers
 
 # Configure GD
 RUN docker-php-ext-configure gd \
